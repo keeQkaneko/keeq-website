@@ -253,11 +253,11 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             const pGeometry = new THREE.BufferGeometry();
-            const pCount = 200;
+            const pCount = 1000;
             const posArray = new Float32Array(pCount * 3);
             for (let i = 0; i < pCount * 3; i++) { posArray[i] = (Math.random() - 0.5) * 15; }
             pGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            const pMaterial = new THREE.PointsMaterial({ size: 0.02, color: 0x3b82f6, transparent: true, opacity: 0.1, blending: THREE.AdditiveBlending });
+            const pMaterial = new THREE.PointsMaterial({ size: 0.10, color: 0x3b82f6, transparent: true, opacity: 0.3, blending: THREE.AdditiveBlending });
             crystalParticles = new THREE.Points(pGeometry, pMaterial);
             scene.add(crystalParticles);
             function animate(time) {
