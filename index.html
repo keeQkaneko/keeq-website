@@ -37,6 +37,68 @@
         rel="stylesheet">
 
     <style>
+        /* オープニング演出用の追加CSS */
+        .unlock-left {
+            transform: translateX(-100%);
+        }
+
+        .unlock-right {
+            transform: translateX(100%);
+        }
+
+        .fade-out-key {
+            opacity: 0;
+            transform: scale(1.2) rotate(15deg);
+            filter: blur(10px);
+        }
+
+        /* スムーズなイージング（受賞レベルの質感） */
+        .cubic-bezier {
+            transition-timing-function: cubic-bezier(0.85, 0, 0.15, 1);
+        }
+
+        /* ドットのアニメーション定義 */
+        .dot {
+            opacity: 0;
+            display: inline-block;
+            animation: dot-reveal 1.6s infinite;
+            /* 1.6秒周期で繰り返す */
+        }
+
+        /* 1つずつ0.2秒ずつ遅らせて開始 */
+        .dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes dot-reveal {
+
+            0%,
+            20% {
+                opacity: 0;
+                transform: translateY(0);
+            }
+
+            40%,
+            70% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            90%,
+            100% {
+                opacity: 0;
+                transform: translateY(0);
+            }
+        }
+
         :root {
             --color-dark: #0F0F0F;
             --color-light-blue: #DEE6EA;
@@ -293,6 +355,29 @@
 </head>
 
 <body class="antialiased">
+
+    <div id="opening-mask" class="fixed inset-0 z-[200] flex items-center justify-center bg-white overflow-hidden">
+        <div id="door-left"
+            class="absolute inset-y-0 left-0 w-1/2 bg-white border-r border-black/5 transition-transform duration-[1.2s] cubic-bezier(0.16, 1, 0.3, 1)">
+        </div>
+        <div id="door-right"
+            class="absolute inset-y-0 right-0 w-1/2 bg-white border-l border-black/5 transition-transform duration-[1.2s] cubic-bezier(0.16, 1, 0.3, 1)">
+        </div>
+
+        <div id="key-container" class="relative z-[210] flex flex-col items-center transition-all duration-700">
+            <div class="w-24 h-24 mb-6 relative animate-pulse">
+                <svg viewBox="0 0 100 100" class="w-full h-full fill-black">
+                    <circle cx="50" cy="35" r="15" />
+                    <path d="M40 45 L60 45 L65 85 L35 85 Z" />
+                </svg>
+                <div id="key-light"
+                    class="absolute inset-0 bg-blue-500/20 rounded-full blur-2xl scale-0 transition-transform duration-700">
+                </div>
+            </div>
+            <p class="text-[10px] font-black tracking-[0.6em] text-black/40 ml-[0.6em]">
+                unlock<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></p>
+        </div>
+    </div>
 
     <canvas id="three-canvas"></canvas>
 
@@ -770,6 +855,33 @@
             initThree();
             initReveal();
             initServiceSlideshow();
+            const gate = document.getElementById('opening-mask'); // IDをHTMLに合わせました
+            const keyContainer = document.getElementById('key-container'); // IDをHTMLに合わせました
+            const keyLight = document.getElementById('key-light');
+
+            // 1. まず鍵に光を灯す（演出の質を高めるため追加）
+            setTimeout(() => {
+                if (keyLight) keyLight.classList.remove('scale-0');
+                if (keyLight) keyLight.classList.add('scale-100');
+            }, 500);
+
+            // 2. 2秒後に解錠を実行
+            setTimeout(() => {
+                // ドアを開ける（CSSで定義したtransitionが動きます）
+                const doorLeft = document.getElementById('door-left');
+                const doorRight = document.getElementById('door-right');
+
+                if (doorLeft) doorLeft.style.transform = 'translateX(-100%)';
+                if (doorRight) doorRight.style.transform = 'translateX(100%)';
+
+                // 鍵アイコンを「.fade-out-key」で消す
+                if (keyContainer) keyContainer.classList.add('fade-out-key');
+
+                // マスク全体を非表示にして背後のコンテンツを操作可能にする
+                setTimeout(() => {
+                    if (gate) gate.style.display = 'none';
+                }, 1200); // ドアが開くアニメーション時間(1.2s)に合わせる
+            }, 4000);
         });
     </script>
 </body>
