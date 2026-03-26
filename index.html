@@ -37,6 +37,15 @@
         rel="stylesheet">
 
     <style>
+        .is-visited #opening-container {
+            display: none !important;
+        }
+
+        .is-visited .hero-content-part {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
         /* オープニング演出用の追加CSS */
         .unlock-left {
             transform: translateX(-100%);
@@ -317,15 +326,17 @@
             display: flex;
             user-select: none;
             padding: 20px 0;
+            /* コンテナ自体にgapを持たせることで、複製したコンテンツとの間隔を一定にします */
+            gap: 32px;
         }
 
         /* スライドする中身 */
         .marquee-content {
             display: flex;
-            gap: 24px;
-            /* ボックス間の溝 */
-            animation: scroll 40s linear infinite;
-            /* 40秒かけて一周（速度はここで調整） */
+            gap: 32px;
+            /* カード同士の間隔：Tailwindのgap-8(2rem=32px)に合わせます */
+            animation: scroll 60s linear infinite;
+            /* ニュースが増えたので少し速度を調整(40s→60s) */
             flex-shrink: 0;
         }
 
@@ -340,8 +351,9 @@
                 transform: translateX(0);
             }
 
+            /* 移動距離を「-100%」と「コンテナのgap」に合わせることで無限ループを実現 */
             to {
-                transform: translateX(calc(-100% - 24px));
+                transform: translateX(calc(-100% - 32px));
             }
         }
 
@@ -482,7 +494,7 @@
                             <div>
                                 <time class="text-xs font-black text-black/30 tracking-[0.2em] mb-4 block">2025 / 11 /
                                     01</time>
-                                <h3 class="text-xl font-bold leading-tight">事業拡大に伴い、豊洲営業所を開設しました。</h3>
+                                <h3 class="text-xl font-bold leading-tight">豊洲営業所に移転しました。</h3>
                             </div>
                         </div>
 
@@ -493,42 +505,34 @@
                                 <h3 class="text-xl font-bold leading-tight">資本金の増資（5,000,000円）を行いました。</h3>
                             </div>
                         </div>
+
+                        <div class="news-card glass p-8 flex flex-col justify-between border-white">
+                            <div>
+                                <time class="text-xs font-black text-black/30 tracking-[0.2em] mb-4 block">2025 / 08 /
+                                    17</time>
+                                <h3 class="text-xl font-bold leading-tight">市ヶ谷営業所を開設しました。</h3>
+                            </div>
+                        </div>
+
+                        <div class="news-card glass p-8 flex flex-col justify-between border-white">
+                            <div>
+                                <time class="text-xs font-black text-black/30 tracking-[0.2em] mb-4 block">2025 / 08 /
+                                    11</time>
+                                <h3 class="text-xl font-bold leading-tight">keeQホームページをリニューアルしました。</h3>
+                            </div>
+                        </div>
+
+                        <div class="news-card glass p-8 flex flex-col justify-between border-white">
+                            <div>
+                                <time class="text-xs font-black text-black/30 tracking-[0.2em] mb-4 block">2024 / 11 /
+                                    26</time>
+                                <h3 class="text-xl font-bold leading-tight">株式会社keeQ 設立しました。</h3>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="marquee-content flex gap-8 pr-8" aria-hidden="true">
-                        <div class="news-card glass p-8 flex flex-col justify-between border-white">
-                            <div>
-                                <div class="flex justify-between items-start mb-4">
-                                    <time class="text-xs font-black text-black/30 tracking-[0.2em]">2026 / 03 /
-                                        02</time>
-                                    <span
-                                        class="text-[9px] font-black text-blue-500 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">Newest</span>
-                                </div>
-                                <h3 class="text-xl font-bold leading-tight">有料職業紹介事業許可を取得しました。</h3>
-                            </div>
-                        </div>
-                        <div class="news-card glass p-8 flex flex-col justify-between border-white">
-                            <div>
-                                <time class="text-xs font-black text-black/30 tracking-[0.2em] mb-4 block">2026 / 01 /
-                                    05</time>
-                                <h3 class="text-xl font-bold leading-tight">新年のご挨拶：皆さまの未来を共創するパートナーとして邁進いたします。</h3>
-                            </div>
-                        </div>
-                        <div class="news-card glass p-8 flex flex-col justify-between border-white">
-                            <div>
-                                <time class="text-xs font-black text-black/30 tracking-[0.2em] mb-4 block">2025 / 11 /
-                                    01</time>
-                                <h3 class="text-xl font-bold leading-tight">事業拡大に伴い、豊洲営業所を開設しました。</h3>
-                            </div>
-                        </div>
-                        <div class="news-card glass p-8 flex flex-col justify-between border-white">
-                            <div>
-                                <time class="text-xs font-black text-black/30 tracking-[0.2em] mb-4 block">2025 / 10 /
-                                    07</time>
-                                <h3 class="text-xl font-bold leading-tight">資本金の増資（5,000,000円）を行いました。</h3>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
 
                 <div class="max-w-[1400px] mx-auto px-6 mt-16 flex justify-center">
@@ -852,36 +856,54 @@
         });
 
         window.addEventListener('DOMContentLoaded', () => {
+            // サイトの基盤となる初期化は常に実行
             initThree();
             initReveal();
             initServiceSlideshow();
-            const gate = document.getElementById('opening-mask'); // IDをHTMLに合わせました
-            const keyContainer = document.getElementById('key-container'); // IDをHTMLに合わせました
+
+            const gate = document.getElementById('opening-mask');
+            const keyContainer = document.getElementById('key-container');
             const keyLight = document.getElementById('key-light');
+            const doorLeft = document.getElementById('door-left');
+            const doorRight = document.getElementById('door-right');
 
-            // 1. まず鍵に光を灯す（演出の質を高めるため追加）
-            setTimeout(() => {
-                if (keyLight) keyLight.classList.remove('scale-0');
-                if (keyLight) keyLight.classList.add('scale-100');
-            }, 500);
+            // --- 追加：セッションストレージの確認 ---
+            const hasOpened = sessionStorage.getItem('keeQ_opened');
 
-            // 2. 2秒後に解錠を実行
-            setTimeout(() => {
-                // ドアを開ける（CSSで定義したtransitionが動きます）
-                const doorLeft = document.getElementById('door-left');
-                const doorRight = document.getElementById('door-right');
+            if (hasOpened) {
+                // 【2回目以降のアクセス】
+                // 演出用マスクを即座に非表示にする
+                if (gate) gate.style.display = 'none';
 
-                if (doorLeft) doorLeft.style.transform = 'translateX(-100%)';
-                if (doorRight) doorRight.style.transform = 'translateX(100%)';
+            } else {
+                // 【初回アクセス】演出を実行
 
-                // 鍵アイコンを「.fade-out-key」で消す
-                if (keyContainer) keyContainer.classList.add('fade-out-key');
-
-                // マスク全体を非表示にして背後のコンテンツを操作可能にする
+                // 1. まず鍵に光を灯す
                 setTimeout(() => {
-                    if (gate) gate.style.display = 'none';
-                }, 1200); // ドアが開くアニメーション時間(1.2s)に合わせる
-            }, 4000);
+                    if (keyLight) {
+                        keyLight.classList.remove('scale-0');
+                        keyLight.classList.add('scale-100');
+                    }
+                }, 500);
+
+                // 2. 4秒後に解錠を実行
+                setTimeout(() => {
+                    // ドアを開ける
+                    if (doorLeft) doorLeft.style.transform = 'translateX(-100%)';
+                    if (doorRight) doorRight.style.transform = 'translateX(100%)';
+
+                    // 鍵アイコンを消す
+                    if (keyContainer) keyContainer.classList.add('fade-out-key');
+
+                    // マスク全体を非表示にする
+                    setTimeout(() => {
+                        if (gate) gate.style.display = 'none';
+
+                        // --- 追加：演出が終わったタイミングでフラグを保存 ---
+                        sessionStorage.setItem('keeQ_opened', 'true');
+                    }, 1200);
+                }, 4000);
+            }
         });
     </script>
 </body>
