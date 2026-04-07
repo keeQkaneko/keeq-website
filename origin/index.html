@@ -220,17 +220,16 @@
     <div id="menu-dimmer" onclick="toggleMenu()"></div>
 
     <div id="mobile-overlay">
-        <a href="/" class="mobile-nav-item text-4xl" onclick="toggleMenu();">TOP</a>
-        <a href="/service/" class="mobile-nav-item text-4xl" onclick="toggleMenu();">SERVICE</a>
-        <a href="/company/" class="mobile-nav-item text-4xl" onclick="toggleMenu();">COMPANY</a>
-        <a href="/recruit/" class="mobile-nav-item text-4xl" onclick="toggleMenu();">RECRUIT</a>
-        <a href="/contact/" class="mobile-nav-item text-4xl" onclick="toggleMenu();">CONTACT</a>
-        <a href="/message/" class="mobile-nav-item text-sm mt-8 opacity-50" onclick="toggleMenu();">Message from
-            CEO</a>
-        <a href="/origin/" class="mobile-nav-item text-sm mt-2 opacity-100 text-black" onclick="toggleMenu();">Name
-            Origin</a>
-        <a href="/privacy-policy/" class="mobile-nav-item text-sm mt-2 opacity-50" onclick="toggleMenu();">Privacy
-            Policy</a>
+        <a href="/service/" class="mobile-nav-item text-4xl" onclick="toggleMenu();" aria-label="事業案内">SERVICE</a>
+        <a href="/company/" class="mobile-nav-item text-4xl" onclick="toggleMenu();" aria-label="会社概要">COMPANY</a>
+        <a href="/recruit/" class="mobile-nav-item text-4xl" onclick="toggleMenu();" aria-label="採用情報">RECRUIT</a>
+        <a href="/contact/" class="mobile-nav-item text-4xl" onclick="toggleMenu();" aria-label="お問い合わせ">CONTACT</a>
+        <a href="/messageFromCEO/" class="mobile-nav-item text-sm mt-8 opacity-50" onclick="toggleMenu();"
+            aria-label="代表の挨拶">Message from CEO</a>
+        <a href="/origin/" class="mobile-nav-item text-sm mt-2 opacity-50" onclick="toggleMenu();"
+            aria-label="社名の由来">Name Origin</a>
+        <a href="/privacy-policy/" class="mobile-nav-item text-sm mt-2 opacity-50" onclick="toggleMenu();"
+            aria-label="プライバシーポリシー">Privacy Policy</a>
     </div>
 
     <header
@@ -240,11 +239,11 @@
         </a>
         <div class="flex items-center space-x-12">
             <nav class="hidden lg:flex space-x-10 text-[11px] font-bold uppercase tracking-[0.3em] items-center">
-                
-                <a href="/service/" class="nav-link">Service</a>
-                <a href="/company/" class="nav-link">Company</a>
-                <a href="/recruit/" class="nav-link">Recruit</a>
-                <a href="/contact/" class="nav-link">Contact</a>
+
+                <a href="/service/" class="nav-link" aria-label="事業案内">Service</a>
+                <a href="/company/" class="nav-link" aria-label="会社概要">Company</a>
+                <a href="/recruit/" class="nav-link" aria-label="採用情報">Recruit</a>
+                <a href="/contact/" class="nav-link" aria-label="お問い合わせ">Contact</a>
             </nav>
             <div class="hamburger" id="hamburger-btn" onclick="toggleMenu()">
                 <span></span><span></span><span></span>
