@@ -12,8 +12,8 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>代表の挨拶 | 株式会社keeQ</title>
-    <meta name="description" content="株式会社keeQ【キーク】代表の挨拶です。">
+    <title>News | 株式会社keeQ</title>
+    <meta name="description" content="株式会社keeQ【キーク】のお知らせや最新情報、プレスリリースなどをご紹介しています。">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -132,15 +132,21 @@
             z-index: 100;
             display: flex;
             flex-direction: column;
+            /* 修正ポイント：中央固定をやめ、上から順に配置 */
             justify-content: flex-start;
             align-items: center;
-            padding-top: 160px;
+            /* 修正ポイント：溢れた場合にスクロール可能にする */
             overflow-y: auto;
+            /* 修正ポイント：上部に適度な余白（20%程度）を持たせ、下部にも余白を確保 */
+            padding-top: 20vh;
+            padding-bottom: 60px;
+
             transform: translateX(100%);
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             border-left: 1px solid rgba(0, 0, 0, 0.05);
             box-shadow: -20px 0 50px rgba(0, 0, 0, 0.05);
         }
+
 
         #mobile-overlay.open {
             transform: translateX(0);
@@ -182,12 +188,13 @@
 
         .hamburger {
             width: 24px;
-            height: 16px;
+            height: 22px;
             position: relative;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+
         }
 
         .hamburger span {
@@ -200,7 +207,7 @@
         }
 
         .hamburger.open span:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
+            transform: translateY(10px) rotate(45deg);
         }
 
         .hamburger.open span:nth-child(2) {
@@ -208,7 +215,25 @@
         }
 
         .hamburger.open span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
+            transform: translateY(-10px) rotate(-45deg);
+        }
+
+        /* ニュース用ホバーエフェクト */
+        .news-item-hover img {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .news-item-hover:hover img {
+            transform: scale(1.05);
+        }
+
+        .news-item-hover h3 {
+            transition: color 0.3s ease;
+        }
+
+        .news-item-hover:hover h3 {
+            color: #3b82f6;
+            /* text-blue-500 */
         }
     </style>
 </head>
@@ -231,78 +256,170 @@
         <a href="/privacy-policy/" class="mobile-nav-item text-sm mt-2 opacity-50" onclick="toggleMenu();"
             aria-label="プライバシーポリシー">Privacy Policy</a>
     </div>
-    
+
+
     <header
         class="fixed top-0 left-0 w-full z-[110] px-8 py-1 flex justify-between items-center bg-white/40 backdrop-blur-xl border-b border-black/5">
-        <a href="/" class="cursor-pointer h-24 flex items-center">
-            <img src="https://i.ibb.co/MxscqtKM/kee-Q.png" alt="株式会社keeQのロゴ" class="h-full w-auto object-contain">
+        <a href="/" class="cursor-pointer h-24 flex items-center block">
+            <img src="https://i.ibb.co/MxscqtKM/kee-Q.png" alt="株式会社keeQのロゴ" class="h-full w-auto object-contain"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="text-3xl font-black tracking-tighter text-black hidden">keeQ</span>
         </a>
+
         <div class="flex items-center space-x-12">
             <nav class="hidden lg:flex space-x-10 text-[11px] font-bold uppercase tracking-[0.3em] items-center">
-
                 <a href="/service/" class="nav-link" aria-label="事業案内">Service</a>
                 <a href="/company/" class="nav-link" aria-label="会社概要">Company</a>
 <a href="/news/" class="nav-link" aria-label="お知らせ">News</a>
                 <a href="/recruit/" class="nav-link" aria-label="採用情報">Recruit</a>
                 <a href="/contact/" class="nav-link" aria-label="お問い合わせ">Contact</a>
             </nav>
+
             <div class="hamburger" id="hamburger-btn" onclick="toggleMenu()">
-                <span></span><span></span><span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </header>
 
     <main class="relative z-10 pt-44 pb-32 mx-auto">
-        <section id="page-message" class="max-w-[1200px] mx-auto px-6 active">
+        <section id="page-news" class="max-w-[1200px] mx-auto px-6 active">
+
             <div class="mb-20 text-center reveal">
-                <h2 class="text-6xl font-black tracking-tighter mt-4">Message from CEO</h2>
+                <h2 class="text-6xl font-black tracking-tighter mt-4">News</h2>
+                <p class="text-black/40 mt-6 max-w-md mx-auto">お知らせ・最新情報</p>
             </div>
 
-            <div class="reveal glass p-12 lg:p-24 bg-white/80">
-                <div class="flex flex-col lg:flex-row gap-16 items-start">
-                    <div class="w-full lg:w-1/3">
-                        <div class="aspect-[3/4] rounded-2xl overflow-hidden shadow-xl relative">
-                            <img src="https://i.ibb.co/6RzRwV4M/keeQ.jpg"
-                                class="absolute inset-0 w-full h-full object-cover" alt="代表取締役社長 金子 聖">
-                        </div>
-                        <div class="mt-8 text-center">
-                            <p class="text-[10px] font-black tracking-widest uppercase text-black/40 mb-2">代表取締役社長</p>
-                            <h3 class="text-2xl font-black">金子 聖</h3>
-                            <p class="text-sm font-bold text-black/30 mt-1">kaneko akira</p>
+            <!-- ニュースリスト コンテナ -->
+            <div class="reveal glass p-8 md:p-14">
+
+                <!-- 記事1 -->
+                <a href="#"
+                    class="news-item-hover flex flex-col md:flex-row gap-8 items-center border-b border-black/10 py-10 first:pt-0 last:border-0 last:pb-0">
+                    <div class="w-full md:w-1/3 shrink-0">
+                        <div
+                            class="aspect-[16/9] md:aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 shadow-sm border border-black/5 relative">
+                            <!-- ダミー画像（実装時は正しい画像パスに差し替えてください） -->
+                            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800"
+                                alt="ニュースサムネイル" class="w-full h-full object-cover">
                         </div>
                     </div>
-
-                    <div class="w-full lg:w-2/3">
-                        <h3 class="text-3xl lg:text-4xl font-black leading-tight mb-12">
-                            透明な意思が、<br>新しい景色を創る。
+                    <div class="w-full md:w-2/3 flex flex-col justify-center">
+                        <div class="flex items-center gap-4 mb-4">
+                            <time class="text-sm font-black text-black/40 tracking-[0.1em]">2026.03.02</time>
+                            <span
+                                class="px-3 py-1 border border-black/20 rounded-full text-[10px] font-bold text-black/60 bg-white/50">お知らせ</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold leading-relaxed text-black">
+                            有料職業紹介事業許可を取得しました。
                         </h3>
-                        <div class="space-y-8 text-black/70 font-light leading-loose text-justify">
-                            <p>現代社会において、私たちは数え切れないほどの情報とモノに囲まれています。<br>その中で、本当に価値のあるもの、心から美しいと思えるものは何でしょうか。</p>
-                            <p>keeQ（キーク）という社名には、常に「Question（問い）」を持ち続け、「Quest（探求）」し、「Quality（質）」を高めていくという意思が込められています。</p>
-                            <p>私たちが提供するアパレルやフレグランスといったライフスタイル事業、そして次世代を担う教育事業。一見すると異なる領域に見えるかもしれませんが、根底にある想いは一つです。<br>それは、「不純物のない、純粋な価値」を届けること。
-                            </p>
-                            <p>曇りのない眼で世界を見つめ、既存の枠組みにとらわれない発想で、人々の日常に新しい風を吹き込む。<br>それが私たちkeeQの使命であり、約束です。</p>
-                            <p>これからのkeeQの挑戦に、どうぞご期待ください。</p>
-                        </div>
+                    </div>
+                </a>
 
-                        <div class="mt-16 pt-16 border-t border-black/5 text-right">
-                            <img src="https://i.ibb.co/MxscqtKM/kee-Q.png" alt="株式会社keeQのロゴ"
-                                class="h-8 opacity-20 ml-auto mb-4">
-                            <p class="text-sm font-bold">株式会社 keeQ</p>
-                            <p class="text-sm font-bold">代表取締役社長　金子 聖</p>
+                <!-- 記事2 -->
+                <a href="#"
+                    class="news-item-hover flex flex-col md:flex-row gap-8 items-center border-b border-black/10 py-10 last:border-0 last:pb-0">
+                    <div class="w-full md:w-1/3 shrink-0">
+                        <div
+                            class="aspect-[16/9] md:aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 shadow-sm border border-black/5 relative">
+                            <img src="https://images.unsplash.com/photo-1478147424044-8d481f18548c?auto=format&fit=crop&q=80&w=800"
+                                alt="ニュースサムネイル" class="w-full h-full object-cover">
                         </div>
                     </div>
-                </div>
+                    <div class="w-full md:w-2/3 flex flex-col justify-center">
+                        <div class="flex items-center gap-4 mb-4">
+                            <time class="text-sm font-black text-black/40 tracking-[0.1em]">2026.01.05</time>
+                            <span
+                                class="px-3 py-1 border border-black/20 rounded-full text-[10px] font-bold text-black/60 bg-white/50">ご挨拶</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold leading-relaxed text-black">
+                            新年のご挨拶：皆さまの未来を共創するパートナーとして邁進いたします。
+                        </h3>
+                    </div>
+                </a>
+
+                <!-- 記事3 -->
+                <a href="#"
+                    class="news-item-hover flex flex-col md:flex-row gap-8 items-center border-b border-black/10 py-10 last:border-0 last:pb-0">
+                    <div class="w-full md:w-1/3 shrink-0">
+                        <div
+                            class="aspect-[16/9] md:aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 shadow-sm border border-black/5 relative">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800"
+                                alt="ニュースサムネイル" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="w-full md:w-2/3 flex flex-col justify-center">
+                        <div class="flex items-center gap-4 mb-4">
+                            <time class="text-sm font-black text-black/40 tracking-[0.1em]">2025.11.01</time>
+                            <span
+                                class="px-3 py-1 border border-black/20 rounded-full text-[10px] font-bold text-black/60 bg-white/50">お知らせ</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold leading-relaxed text-black">
+                            事業拡大に伴い、豊洲営業所を開設しました。
+                        </h3>
+                    </div>
+                </a>
+
+                <!-- 記事4 -->
+                <a href="#"
+                    class="news-item-hover flex flex-col md:flex-row gap-8 items-center border-b border-black/10 py-10 last:border-0 last:pb-0">
+                    <div class="w-full md:w-1/3 shrink-0">
+                        <div
+                            class="aspect-[16/9] md:aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 shadow-sm border border-black/5 relative">
+                            <img src="https://images.unsplash.com/photo-1553729459-efe14ef20594?auto=format&fit=crop&q=80&w=800"
+                                alt="ニュースサムネイル" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="w-full md:w-2/3 flex flex-col justify-center">
+                        <div class="flex items-center gap-4 mb-4">
+                            <time class="text-sm font-black text-black/40 tracking-[0.1em]">2025.10.07</time>
+                            <span
+                                class="px-3 py-1 border border-black/20 rounded-full text-[10px] font-bold text-black/60 bg-white/50">IR</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold leading-relaxed text-black">
+                            資本金の増資（5,000,000円）を行いました。
+                        </h3>
+                    </div>
+                </a>
+
+                <!-- 記事5 -->
+                <a href="#"
+                    class="news-item-hover flex flex-col md:flex-row gap-8 items-center border-b border-black/10 py-10 last:border-0 last:pb-0">
+                    <div class="w-full md:w-1/3 shrink-0">
+                        <div
+                            class="aspect-[16/9] md:aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 shadow-sm border border-black/5 relative">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                                alt="ニュースサムネイル" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="w-full md:w-2/3 flex flex-col justify-center">
+                        <div class="flex items-center gap-4 mb-4">
+                            <time class="text-sm font-black text-black/40 tracking-[0.1em]">2025.08.11</time>
+                            <span
+                                class="px-3 py-1 border border-black/20 rounded-full text-[10px] font-bold text-black/60 bg-white/50">お知らせ</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold leading-relaxed text-black">
+                            keeQのコーポレートサイトをリニューアルオープンしました。
+                        </h3>
+                    </div>
+                </a>
+
             </div>
 
-            <div class="text-center mt-20 pb-20">
-                <a href="/company/"
-                    class="inline-block px-8 py-3 bg-black text-white rounded-full text-[10px] font-black uppercase tracking-[0.3em] hover:bg-gray-800 transition-all">Back
-                    to Company</a>
+            <!-- ページネーション（必要に応じて表示/非表示） -->
+            <div class="mt-16 flex justify-center space-x-2 reveal">
+                <span
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-black text-white font-bold text-sm shadow-md">1</span>
+                <a href="#"
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-white/50 text-black/50 font-bold text-sm hover:bg-white hover:text-black transition-colors">2</a>
+                <span class="w-10 h-10 flex items-center justify-center text-black/30">...</span>
             </div>
+
         </section>
     </main>
 
+    <!-- フッター（既存のものと同一） -->
     <footer class="relative z-50 bg-white border-t border-black/5 pt-20 pb-10 px-8">
         <div class="max-w-[1400px] mx-auto">
             <div class="flex flex-col lg:flex-row justify-between items-start mb-16">
@@ -328,7 +445,7 @@
                     </div>
                     <div class="flex flex-col space-y-4">
                         <a href="/recruit/" class="hover:text-black transition-colors">Recruit</a>
-                        <a href="/message/" class="hover:text-black transition-colors">Message</a>
+                        <a href="/messageFromCEO/" class="hover:text-black transition-colors">Message</a>
                     </div>
                     <div class="flex flex-col space-y-4">
                         <a href="/contact/" class="hover:text-black transition-colors">Contact</a>
