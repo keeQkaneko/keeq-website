@@ -305,6 +305,30 @@
                                 placeholder="0312345678">
                         </div>
 
+                        <!-- お問い合わせ種類 -->
+                        <div class="relative group">
+                            <label for="inquiry_type"
+                                class="block text-[10px] font-bold uppercase tracking-widest text-black/40 mb-3 ml-1">お問い合わせ種類
+                                <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <select id="inquiry_type" name="inquiry_type" required
+                                    class="w-full bg-white/40 border border-black/5 rounded-2xl px-6 py-4 outline-none focus:border-black/20 focus:bg-white/60 transition-all text-black appearance-none cursor-pointer">
+                                    <option value="" disabled selected class="text-black/20">選択してください</option>
+                                    <option value="フレグランス／アパレルサービスについて">フレグランス／アパレルサービスについて</option>
+                                    <option value="企業様：WEB制作について">企業様：WEB制作について</option>
+                                    <option value="企業様：ウズキャドの人材紹介について">企業様：ウズキャドの人材紹介について</option>
+                                    <option value="企業様：その他サービスについて">企業様：その他サービスについて</option>
+                                    <option value="企業様／求職者様：採用に関する問い合わせ">企業様／求職者様：採用に関する問い合わせ</option>
+                                    <option value="求職者様：ウズキャドに関する問い合わせ">求職者様：ウズキャドに関する問い合わせ</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-6">
+                                    <svg class="w-4 h-4 text-black/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- お問い合わせ内容 -->
                         <div class="relative group">
                             <label for="message"
