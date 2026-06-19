@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>お問い合わせ | 株式会社keeQ</title>
     <meta name="description" content="株式会社keeQ【キーク】へのお問い合わせフォームです。こちらからご入力をお願いいたします。">
+    <link rel="canonical" href="https://keeq.co.jp/contact/">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -224,7 +225,7 @@
         <a href="/news/" class="mobile-nav-item text-4xl" onclick="toggleMenu();" aria-label="お知らせ">NEWS</a>
         <a href="/recruit/" class="mobile-nav-item text-4xl" onclick="toggleMenu();" aria-label="採用情報">RECRUIT</a>
         <a href="/contact/" class="mobile-nav-item text-4xl" onclick="toggleMenu();" aria-label="お問い合わせ">CONTACT</a>
-        <a href="/messageFromCEO/" class="mobile-nav-item text-sm mt-8 opacity-50" onclick="toggleMenu();"
+        <a href="/message/" class="mobile-nav-item text-sm mt-8 opacity-50" onclick="toggleMenu();"
             aria-label="代表の挨拶">Message from CEO</a>
         <a href="/origin/" class="mobile-nav-item text-sm mt-2 opacity-50" onclick="toggleMenu();"
             aria-label="社名の由来">Name Origin</a>
@@ -257,7 +258,7 @@
         <section id="contact-form" class="active">
             <!-- ヒーローセクション -->
             <div class="mb-20 text-center reveal">
-                <h2 class="text-6xl font-black tracking-tighter mt-4">Contact</h2>
+                <h1 class="text-6xl font-black tracking-tighter mt-4">Contact</h1>
                 <p class="text-black/40 mt-6 max-w-md mx-auto">
                     お問い合わせ </p>
             </div>
@@ -314,8 +315,10 @@
                                 <select id="inquiry_type" name="inquiry_type" required
                                     class="w-full bg-white/40 border border-black/5 rounded-2xl px-6 py-4 outline-none focus:border-black/20 focus:bg-white/60 transition-all text-black appearance-none cursor-pointer">
                                     <option value="" disabled selected class="text-black/20">選択してください</option>
-                                    <option value="フレグランス／アパレルサービスについて">フレグランス／アパレルサービスについて</option>
-                                    <option value="企業様：WEB制作について">企業様：WEB制作について</option>
+                                    <option value="企業様：キャドガクについて">企業様：キャドガクについて</option>
+                                    <option value="求職者様：キャドガクについて">求職者様：キャドガクについて</option>
+                                    <option value="寺院様：WEB制作について">寺院様：WEB制作について</option>
+                                    <option value="OEM／ODMサービスについて">OEM／ODMサービスについて</option>
                                     <option value="企業様：その他サービスについて">企業様：その他サービスについて</option>
                                     <option value="企業様／求職者様：採用に関する問い合わせ">企業様／求職者様：採用に関する問い合わせ</option>
                                 </select>

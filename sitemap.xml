@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.keeq.co.jp/</loc>
+    <loc>https://keeq.co.jp/</loc>
   </url>
   <url>
-    <loc>https://www.keeq.co.jp/company/</loc>
+    <loc>https://keeq.co.jp/service/</loc>
   </url>
   <url>
-    <loc>https://www.keeq.co.jp/contact/</loc>
+    <loc>https://keeq.co.jp/company/</loc>
   </url>
   <url>
-    <loc>https://www.keeq.co.jp/messageFromCEO/</loc>
+    <loc>https://keeq.co.jp/news/</loc>
   </url>
   <url>
-    <loc>https://www.keeq.co.jp/origin/</loc>
+    <loc>https://keeq.co.jp/recruit/</loc>
   </url>
   <url>
-    <loc>https://www.keeq.co.jp/privacy-policy/</loc>
+    <loc>https://keeq.co.jp/contact/</loc>
   </url>
   <url>
-    <loc>https://www.keeq.co.jp/recruit/</loc>
+    <loc>https://keeq.co.jp/message/</loc>
   </url>
   <url>
-    <loc>https://www.keeq.co.jp/service/</loc>
+    <loc>https://keeq.co.jp/origin/</loc>
   </url>
   <url>
-    <loc>https://www.keeq.co.jp/timeline/</loc>
+    <loc>https://keeq.co.jp/timeline/</loc>
+  </url>
+  <url>
+    <loc>https://keeq.co.jp/privacy-policy/</loc>
   </url>
 </urlset>

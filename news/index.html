@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News | 株式会社keeQ</title>
     <meta name="description" content="株式会社keeQ【キーク】のお知らせや最新情報、プレスリリースなどをご紹介しています。">
+    <link rel="canonical" href="https://keeq.co.jp/news/">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -249,7 +250,7 @@
         <a href="/news/" class="mobile-nav-item text-4xl" onclick="toggleMenu();" aria-label="お知らせ">NEWS</a>
         <a href="/recruit/" class="mobile-nav-item text-4xl" onclick="toggleMenu();" aria-label="採用情報">RECRUIT</a>
         <a href="/contact/" class="mobile-nav-item text-4xl" onclick="toggleMenu();" aria-label="お問い合わせ">CONTACT</a>
-        <a href="/messageFromCEO/" class="mobile-nav-item text-sm mt-8 opacity-50" onclick="toggleMenu();"
+        <a href="/message/" class="mobile-nav-item text-sm mt-8 opacity-50" onclick="toggleMenu();"
             aria-label="代表の挨拶">Message from CEO</a>
         <a href="/origin/" class="mobile-nav-item text-sm mt-2 opacity-50" onclick="toggleMenu();"
             aria-label="社名の由来">Name Origin</a>
@@ -287,7 +288,7 @@
         <section id="page-news" class="max-w-[1200px] mx-auto px-6 active">
 
             <div class="mb-20 text-center reveal">
-                <h2 class="text-6xl font-black tracking-tighter mt-4">News</h2>
+                <h1 class="text-6xl font-black tracking-tighter mt-4">News</h1>
                 <p class="text-black/40 mt-6 max-w-md mx-auto">お知らせ・最新情報</p>
             </div>
 
@@ -295,6 +296,26 @@
             <div class="reveal glass p-8 md:p-14">
 
                 <!-- 記事1 -->
+                 <div
+                    class="flex flex-col md:flex-row gap-8 items-center border-b border-black/10 py-10 first:pt-0 last:border-0 last:pb-0">
+                    <div class="w-full md:w-60 shrink-0">
+                        <img src="/images/cadgaku-logo.png"
+                                    class="w-4/5 h-full object-cover mx-auto" alt="無料CADスクール「キャドガク」のロゴ">
+                                    
+                    </div>
+
+                    <div class="w-full flex-1 flex flex-col justify-center">
+                        <div class="flex items-center gap-4 mb-4">
+                            <time class="text-sm font-black text-black/40 tracking-[0.1em]">2026.05.08</time>
+                            <span
+                                class="px-3 py-1 border border-black/20 rounded-full text-[10px] font-bold text-black/60 bg-white/50">サービスリリース</span>
+                        </div>
+                        <h3 class="text-xl md:text-1xl leading-relaxed font text-black">
+                            20代向け就職直結型・完全無料のCADスクール【キャドガク】をリリースしました。
+                        </h3>
+                    </div>
+                </div>
+
                 <div
                     class="flex flex-col md:flex-row gap-8 items-center border-b border-black/10 py-10 first:pt-0 last:border-0 last:pb-0">
                     <div class="w-full md:w-60 shrink-0">
@@ -467,7 +488,7 @@
                     </div>
                     <div class="flex flex-col space-y-4">
                         <a href="/recruit/" class="hover:text-black transition-colors">Recruit</a>
-                        <a href="/messageFromCEO/" class="hover:text-black transition-colors">Message</a>
+                        <a href="/message/" class="hover:text-black transition-colors">Message</a>
                     </div>
                     <div class="flex flex-col space-y-4">
                         <a href="/contact/" class="hover:text-black transition-colors">Contact</a>
