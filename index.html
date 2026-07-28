@@ -53,6 +53,17 @@
             transform: translateX(-100%);
         }
 
+        .hero-reveal {
+            opacity: 0;
+            transform: scale(1.06) translateY(60px);
+            transition: opacity 4s cubic-bezier(0.16, 1, 0.3, 1), transform 4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-reveal.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
         .unlock-right {
             transform: translateX(100%);
         }
@@ -435,7 +446,7 @@
             <h1 class="sr-only">株式会社keeQ｜無料CADスクール「キャドガク」運営・教育事業</h1>
             <div class="mb-1">
                 <div class="relative w-full h-[100vh] overflow-hidden flex items-center justify-center text-center">
-                    <div class="absolute inset-0 bg-cover bg-center"
+                    <div id="hero-image" class="absolute inset-0 bg-cover bg-center hero-reveal"
                         style="background-image: url('/images/first.png');">
                     </div>
                     <div class="absolute inset-0 bg-black/5"></div>
@@ -862,6 +873,7 @@
             const keyLight = document.getElementById('key-light');
             const doorLeft = document.getElementById('door-left');
             const doorRight = document.getElementById('door-right');
+            const heroImage = document.getElementById('hero-image');
 
             // --- 追加：セッションストレージの確認 ---
             const hasOpened = sessionStorage.getItem('keeQ_opened');
@@ -870,6 +882,11 @@
                 // 【2回目以降のアクセス】
                 // 演出用マスクを即座に非表示にする
                 if (gate) gate.style.display = 'none';
+
+                // ヒーロー画像をふわっとフェードインさせる
+                requestAnimationFrame(() => {
+                    if (heroImage) heroImage.classList.add('active');
+                });
 
             } else {
                 // 【初回アクセス】演出を実行
@@ -890,6 +907,9 @@
 
                     // 鍵アイコンを消す
                     if (keyContainer) keyContainer.classList.add('fade-out-key');
+
+                    // ドアが開くのに合わせてヒーロー画像をふわっと浮かび上がらせる
+                    if (heroImage) heroImage.classList.add('active');
 
                     // マスク全体を非表示にする
                     setTimeout(() => {
